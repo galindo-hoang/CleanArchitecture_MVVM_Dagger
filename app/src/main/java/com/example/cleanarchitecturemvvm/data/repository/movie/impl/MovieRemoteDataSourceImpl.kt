@@ -5,8 +5,10 @@ import com.example.cleanarchitecturemvvm.data.model.movie.MovieList
 import com.example.cleanarchitecturemvvm.data.repository.movie.MovieRemoteDataSource
 import retrofit2.Response
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class MovieRemoteDataSourceImpl constructor(
+@Singleton
+class MovieRemoteDataSourceImpl @Inject constructor(
     private val tmdbService: TMDBService,
     private val apiKey: String
 ): MovieRemoteDataSource {

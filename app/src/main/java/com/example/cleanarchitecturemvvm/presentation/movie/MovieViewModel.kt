@@ -8,7 +8,7 @@ import com.example.cleanarchitecturemvvm.domain.usecase.UpdateMoviesUseCase
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
-class MovieViewModel constructor(
+class MovieViewModel @Inject constructor(
     private val getMoviesUseCase: GetMoviesUseCase,
     private val updateMovieUseCase: UpdateMoviesUseCase
 ): ViewModel() {
@@ -22,16 +22,16 @@ class MovieViewModel constructor(
         emit(movieList)
     }
 
-    class MovieViewModelFactory constructor(
-        private val getMoviesUseCase: GetMoviesUseCase,
-        private val updateMovieUseCase: UpdateMoviesUseCase,
-    ): ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if(modelClass.isAssignableFrom(MovieViewModel::class.java)){
-                return MovieViewModel(getMoviesUseCase,updateMovieUseCase) as T
-            }
-            throw IllegalArgumentException("Unknown MovieViewModel class")
-        }
-
-    }
+//    class MovieViewModelFactory constructor(
+//        private val getMoviesUseCase: GetMoviesUseCase,
+//        private val updateMovieUseCase: UpdateMoviesUseCase,
+//    ): ViewModelProvider.Factory {
+//        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//            if(modelClass.isAssignableFrom(MovieViewModel::class.java)){
+//                return MovieViewModel(getMoviesUseCase,updateMovieUseCase) as T
+//            }
+//            throw IllegalArgumentException("Unknown MovieViewModel class")
+//        }
+//
+//    }
 }

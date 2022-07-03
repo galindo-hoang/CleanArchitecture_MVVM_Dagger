@@ -6,8 +6,11 @@ import com.example.cleanarchitecturemvvm.data.repository.artist.ArtistLocalDataS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ArtistLocalDataSourceImpl(
+@Singleton
+class ArtistLocalDataSourceImpl @Inject constructor(
     private val artistDao: ArtistDao
 ): ArtistLocalDataSource {
     override suspend fun getArtistsFromDB(): List<Artist> = artistDao.fetchArtists()

@@ -2,8 +2,11 @@ package com.example.cleanarchitecturemvvm.data.repository.artist
 
 import com.example.cleanarchitecturemvvm.data.model.artist.Artist
 import com.example.cleanarchitecturemvvm.domain.repository.ArtistRepository
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ArtistRepositoryImpl(
+@Singleton
+class ArtistRepositoryImpl @Inject constructor(
     private val artistLocalDataSource: ArtistLocalDataSource,
     private val artistRemoteDataSource: ArtistRemoteDataSource,
     private val artistCacheDataSource: ArtistCacheDataSource

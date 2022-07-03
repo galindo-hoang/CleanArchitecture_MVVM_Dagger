@@ -6,8 +6,11 @@ import com.example.cleanarchitecturemvvm.data.repository.tvshow.TvShowLocalDataS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class TvShowLocalDataSourceImpl(
+@Singleton
+class TvShowLocalDataSourceImpl @Inject constructor(
     private val tvShowDao: TvShowDao
 ): TvShowLocalDataSource {
     override suspend fun getTvShowsFromDatabase(): List<TvShow> = tvShowDao.fetchTvShows()

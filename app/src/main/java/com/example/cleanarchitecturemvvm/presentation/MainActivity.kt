@@ -10,7 +10,7 @@ import com.example.cleanarchitecturemvvm.presentation.artist.ArtistActivity
 import com.example.cleanarchitecturemvvm.presentation.movie.MovieActivity
 import com.example.cleanarchitecturemvvm.presentation.tvshow.TvShowActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

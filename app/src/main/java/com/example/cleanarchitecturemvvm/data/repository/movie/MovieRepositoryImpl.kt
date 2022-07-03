@@ -3,8 +3,10 @@ package com.example.cleanarchitecturemvvm.data.repository.movie
 import com.example.cleanarchitecturemvvm.data.model.movie.Movie
 import com.example.cleanarchitecturemvvm.domain.repository.MovieRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class MovieRepositoryImpl constructor(
+@Singleton
+class MovieRepositoryImpl @Inject constructor(
     private val movieRemoteDatasource: MovieRemoteDataSource,
     private val movieLocalDatasource: MovieLocalDataSource,
     private val movieCacheDataSource: MovieCacheDataSource,

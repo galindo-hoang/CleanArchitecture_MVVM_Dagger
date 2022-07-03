@@ -2,8 +2,11 @@ package com.example.cleanarchitecturemvvm.data.repository.tvshow
 
 import com.example.cleanarchitecturemvvm.data.model.tvshow.TvShow
 import com.example.cleanarchitecturemvvm.domain.repository.TvShowRepository
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class TvShowRepositoryImpl(
+@Singleton
+class TvShowRepositoryImpl @Inject constructor(
     private val tvShowRemoteDataSource: TvShowRemoteDataSource,
     private val tvShowLocalDataSource: TvShowLocalDataSource,
     private val tvShowCacheDataSource: TvShowCacheDataSource
