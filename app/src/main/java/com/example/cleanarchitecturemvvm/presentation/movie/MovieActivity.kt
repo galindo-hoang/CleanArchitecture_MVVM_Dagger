@@ -1,0 +1,45 @@
+package com.example.cleanarchitecturemvvm.presentation.movie
+
+import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import com.example.cleanarchitecturemvvm.R
+import com.example.cleanarchitecturemvvm.databinding.ActivityMovieBinding
+import com.example.cleanarchitecturemvvm.di.Injector
+import com.example.cleanarchitecturemvvm.presentation.BaseActivity
+import javax.inject.Inject
+
+class MovieActivity : BaseActivity() {
+    @Inject
+    lateinit var factory: MovieViewModel.MovieViewModelFactory
+    private val movieViewModel: MovieViewModel by lazy {
+        ViewModelProvider(this,factory)[MovieViewModel::class.java]
+    }
+    private lateinit var binding: ActivityMovieBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_movie)
+        (application as Injector).createMovieSubComponent().inject(this)
+        movieViewModel.getMovies().observe(this){
+            Log.e("----",it.toString())
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.update,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.action_update -> {
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+}
